@@ -6,12 +6,12 @@ import axios from 'axios'
 class App extends Component {
   //storing places in the allVenues state
   state = {
-    allVenues: []
+    venues: []
   }
 
   componentDidMount() {
     this.getVenues()
-    this.renderMap()
+    
   }
 
   renderMap = () => {
@@ -32,7 +32,7 @@ class App extends Component {
     axios.get(endPoint + new URLSearchParams(parameters))
           .then(response => {
           this.setState({
-              allVenues: response.data.response.groups[0].items})
+              venues: response.data.response.groups[0].items}, this.renderMap())
           })
           .catch(error => {
             console.log('ERROR' + error)
@@ -43,6 +43,14 @@ class App extends Component {
    let map = new window.google.maps.Map(document.getElementById('map'), {
       center: {lat: 42.443, lng: -76.501},
       zoom: 14 });
+
+    this.state.venues.map(myVenue => {
+      let marker = new window.google.maps.Marker({
+        position: {lat: myVenue.venue.location.lat, 
+                   lng: myVenue.venue.location.lng},
+        map: map
+        });
+    })   
   }
 
 
