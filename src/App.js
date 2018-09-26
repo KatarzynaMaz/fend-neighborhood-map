@@ -4,6 +4,10 @@ import './App.css';
 import axios from 'axios'
 
 class App extends Component {
+  //storing places in the allVenues state
+  state = {
+    allVenues: []
+  }
 
   componentDidMount() {
     this.getVenues()
@@ -27,7 +31,8 @@ class App extends Component {
     }
     axios.get(endPoint + new URLSearchParams(parameters))
           .then(response => {
-            console.log(response.data.response.groups[0].items)
+          this.setState({
+              allVenues: response.data.response.groups[0].items})
           })
           .catch(error => {
             console.log('ERROR' + error)
