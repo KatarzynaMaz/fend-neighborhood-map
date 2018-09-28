@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
+import Filter from './Filter'
 
 class App extends Component {
   //storing places in the venues state
@@ -34,7 +34,7 @@ class App extends Component {
               venues: response.data.response.groups[0].items}, this.renderMap())
           })
           .catch(error => {
-            console.log('ERROR' + error)
+            console.log('ERROR' + error) 
           })
   }
   
@@ -59,7 +59,7 @@ class App extends Component {
           map: map
         });
 
-        //click on chosen marker
+        //click on a chosen marker
         marker.addListener('click', function() {
 
         //the content needs to be changed
@@ -76,6 +76,7 @@ class App extends Component {
     return (
       <main> 
        <div id='map'></div>
+       <Filter/>
       </main>
     );
   }
