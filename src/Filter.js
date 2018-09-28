@@ -36,7 +36,7 @@ class Filter extends Component {
         this.setState({filter:e.target.value})
     }
     render (){
-        let venues = this.state.venues;
+        let venues = this.state.venues.slice(0,10);
    
         if(this.state.filter){
             venues=venues.filter(myVenue=>
