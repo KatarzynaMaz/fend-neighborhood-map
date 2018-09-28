@@ -12,7 +12,7 @@
   height: 150px;
   padding: 20px;
   color: white;
-}*/
+}
 
 .App-title {
   font-size: 1.5em;
@@ -20,12 +20,9 @@
 
 .App-intro {
   font-size: large;
-}
+}*/
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+
  /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
        #map {
@@ -37,3 +34,22 @@
         margin: 0;
         padding: 0;
       }
+      .side-container {
+        z-index: 999;
+        position: absolute;
+        top: 70px;
+        margin-left: 20px;
+        margin-top: 10px;
+        width: 300px;
+      }
+      
+      .input-container {
+        width: 300px;
+        margin-bottom: 20px;
+        height: 50px;
+      }
+      
+      .venue-list {
+        font-size: 20px;
+        font-weight: 400;
+      }     
