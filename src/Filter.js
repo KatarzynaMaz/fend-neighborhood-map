@@ -37,6 +37,7 @@ class Filter extends Component {
     }
     render (){
         let venues = this.state.venues;
+   
         if(this.state.filter){
             venues=venues.filter(myVenue=>
                 myVenue.venue.name.toLowerCase()
@@ -49,7 +50,8 @@ class Filter extends Component {
                 <div>
                     {venues.map(myVenue => 
                         <p className='venue-list' key={myVenue.venue.id}>
-                             {myVenue.venue.className}
+                             {myVenue.venue.name}
+                             
                         </p>)}
                 </div>    
         
