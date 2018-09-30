@@ -78,6 +78,11 @@ componentDidMount() {
         }))
     })   
     }
+    onInputChange = e => {
+        this.setState({input:e.target.value})
+        this.filterItems(e.targer.value)
+        this.filteredMarkers(e.target.value)
+    }
 
 
   render() {
@@ -99,12 +104,5 @@ function loadScript(url){
   script.differ = true
   index.parentNode.insertBefore(script,index)
 }
-
-
-
-
-
-
-
 
 export default MapContainer;
