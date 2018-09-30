@@ -59,9 +59,10 @@ componentDidMount() {
           position: {lat: myVenue.venue.location.lat, 
                     lng: myVenue.venue.location.lng},
           map: map,
-          title: myVenue.venue.name
-        
+          title: myVenue.venue.name,
+          id: myVenue.venue.id        
         });
+        
        
 
         //click on a chosen marker
