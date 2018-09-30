@@ -53,11 +53,14 @@ class App extends Component {
         let contentString = `${myVenue.venue.name}`
 
         //create a marker
+        
         let marker = new window.google.maps.Marker({
           position: {lat: myVenue.venue.location.lat, 
                     lng: myVenue.venue.location.lng},
-          map: map
+          map: map,
+          name: myVenue.venue.name
         });
+       
 
         //click on a chosen marker
         marker.addListener('click', function() {
