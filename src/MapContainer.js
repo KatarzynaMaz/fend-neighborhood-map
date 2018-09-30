@@ -5,10 +5,11 @@ import Filter from './Filter'
 class MapContainer extends Component {
     state = {
         venues: [],
-        venuesFiltered: []
+        venuesFiltered: [],
+        markers:[]
     }
 
-
+//getting venues when the map is rendered
 componentDidMount() {
     this.getVenues()
   }
@@ -58,7 +59,8 @@ componentDidMount() {
           position: {lat: myVenue.venue.location.lat, 
                     lng: myVenue.venue.location.lng},
           map: map,
-          name: myVenue.venue.name
+          title: myVenue.venue.name
+        
         });
        
 
@@ -69,10 +71,13 @@ componentDidMount() {
         infowindow.setContent(contentString)
 
         //open infowindow
-          infowindow.open(map, marker);
+        infowindow.open(map, marker);
         });
+        this.setState(state => ({
+            markers: [...state.markers,marker]
+        }))
     })   
-  }
+    }
 
 
   render() {
