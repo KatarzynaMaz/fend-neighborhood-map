@@ -40,12 +40,14 @@ getVenues =() => {
  
     axios.get(endPoint + new URLSearchParams(parameters))
           .then(response => {
+            console.log(response.data.response.groups[0].items)
           this.setState({
               venues: response.data.response.groups[0].items}, this.renderMap())
           })
           .catch(error => {
             console.log('ERROR' + error)
           })
+          console.log('map project');
   }
  
   initMap = () => {
@@ -59,7 +61,7 @@ getVenues =() => {
       let infowindow = new window.google.maps.InfoWindow();
       
       //Display markers
-      this.props.venues.filter(venue => venue.name.toLowerCase().inclues(this.state.query.toLowerCase()))
+      this.state.venues.filter(venue => venue.name.toLowerCase().includes(this.state.query.toLowerCase()))
         .forEach (venue => {
 
         let contentString = `
@@ -122,6 +124,7 @@ getVenues =() => {
   render() {
     const {query,map,markers,infowindow,contents, filtered,hideMarkers} = this.state;
     const {venues} = this.props;
+    console.log(this.state.venues)
     return (
       <main className = "app-container"> 
         <header className ='header'>
@@ -130,7 +133,7 @@ getVenues =() => {
           <h1 className = "title"> Restaurants in Ithaca, NY</h1>
         </header>
         <ErrorBoundary>
-        <Filter query={query} venues={venues} map = {map} markers={markers} contents = {contents}
+        <Filter query={query} venues= {this.state.venues} map = {map} markers={markers} contents = {contents}
           infowindow={infowindow} filtered={filtered} hideMarkers={hideMarkers}/>
         </ErrorBoundary>
        <div id='map' role='application' aria-label='map'></div>
