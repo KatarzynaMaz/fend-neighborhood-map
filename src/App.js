@@ -37,21 +37,23 @@ class App extends Component {
 
     filter = (query => {
 
-      this.setState(state =>{
-        let venues
-        
+      this.setState(state => {
+        let venues=state.venues;
+
+        if(query) {
+          venues = state.venues.filter(myVenue =>
+            myVenue.venue.name.toLowerCase()
+            .includes(query.toLowerCase()))
+        }
+        return ({filteredVenues: venues});
       })
     })
-  
-  
-      
-    
 
 
   render() {
     return (
       <main> 
-       <div id='map'></div>
+       <Map venues = {this.state.filteredVenues}/>
        <Filter/>
       </main>
     );
