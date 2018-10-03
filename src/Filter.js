@@ -26,7 +26,10 @@ class Filter extends Component {
             <div className="content" aria-label="Restaurants in Ithaca, NY">
                 <ul>
                     
-                    {venues.filter(venue=> venue.name.toLowerCase().includes(query.toLowerCase())).map((venue, index) => {
+                    {venues.filter(venue=>
+                    {console.log(venue.name.toLowerCase());
+                    console.log(query.toLowerCase()); return
+                    venue.name.toLowerCase().includes(query.toLowerCase())}).map((venue, index) => {
                             return <li className="list-item" key={index} onClick={this.handleClicks.bind(this, venue)} tabIndex={1}>{venue.name}</li>})
                     }
                    
