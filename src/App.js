@@ -13,7 +13,8 @@ class App extends Component {
     infowindow:'',
     contents:[],
     filtered:[],
-    hideMarkers:[]
+    hideMarkers:[],
+    map: ''
   }
 
   componentDidMount() {
@@ -122,9 +123,9 @@ getVenues =() => {
     }
   }       
   render() {
-    const {query,map,markers,infowindow,contents, filtered,hideMarkers} = this.state;
-    const {venues} = this.props;
-    console.log(this.state.venues)
+    const {venues,query,markers,infowindow,contents, filtered,hideMarkers,map} = this.state;
+    
+    console.log(query)
     return (
       <main className = "app-container"> 
         <header className ='header'>
@@ -133,7 +134,7 @@ getVenues =() => {
           <h1 className = "title"> Restaurants in Ithaca, NY</h1>
         </header>
         <ErrorBoundary>
-        <Filter query={query} venues= {this.state.venues} map = {map} markers={markers} contents = {contents}
+        <Filter query={query} venues= {venues} map = {map} markers={markers} contents = {contents}
           infowindow={infowindow} filtered={filtered} hideMarkers={hideMarkers}/>
         </ErrorBoundary>
        <div id='map' role='application' aria-label='map'></div>
