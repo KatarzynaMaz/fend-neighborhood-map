@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Filter from './Filter'
 import axios from 'axios'
+import ErrorBoundary from './ErrorBoundary';
 
 
 class App extends Component {
@@ -128,10 +129,12 @@ getVenues =() => {
           onChange = {event => this.handleFilter(event.target.value)} value='query'/>
           <h1 className = "title"> Restaurants in Ithaca, NY</h1>
         </header>
+        <ErrorBoundary>
         <Filter query={query} venues={venues} map = {map} markers={markers} contents = {contents}
           infowindow={infowindow} filtered={filtered} hideMarkers={hideMarkers}/>
+        </ErrorBoundary>
        <div id='map' role='application' aria-label='map'></div>
-       <ErrorBoundary/>
+       
       </main>
       );
   }
