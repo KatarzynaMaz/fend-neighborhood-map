@@ -18,7 +18,10 @@ class Filter extends Component {
     }
    
     render() {
-      venues = this.props.venues
+        console.log(this.props.venues);
+        console.log(this.props.query)
+    let venues = this.props.venues;
+    let query = (this.props.query) ? this.props.query: 'Ithaca';
         return (
             <div className="content" aria-label="Restaurants in Ithaca, NY">
                 <ul>
