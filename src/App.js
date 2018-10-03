@@ -43,7 +43,8 @@ getVenues =() => {
           .then(response => {
             console.log(response.data.response.groups[0].items)
           this.setState({
-              venues: response.data.response.groups[0].items}, this.renderMap())
+              venues: response.data.response.groups[0].items.map(item=>item.venue)}, 
+              this.renderMap())
           })
           .catch(error => {
             console.log('ERROR' + error)
