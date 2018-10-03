@@ -27,15 +27,14 @@ class Filter extends Component {
                 <ul>
                     
                     {venues.filter(venue=>
-                    {console.log(venue.name.toLowerCase());
-                    console.log(query.toLowerCase()); return
-                    venue.name.toLowerCase().includes(query.toLowerCase())}).map((venue, index) => {
+                    
+                    venue.name.toLowerCase().includes(query.toLowerCase())).map((venue, index) => {
                             return <li className="list-item" key={index} onClick={this.handleClicks.bind(this, venue)} tabIndex={1}>{venue.name}</li>})
                     }
                    
                 </ul>
             </div>
-    )
+     )
     }
 }
 
