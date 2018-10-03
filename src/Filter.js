@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ErrorBoundary from './ErrorBoundary'
 
 class Filter extends Component {
 
@@ -23,11 +22,11 @@ class Filter extends Component {
         return (
             <div className="content" aria-label="Restaurants in Ithaca, NY">
                 <ul>
-                    <ErrorBoundary>
+                    
                     {venues.filter(venue=> venue.name.toLowerCase().includes(query.toLowerCase())).map((venue, index) => {
                             return <li className="list-item" key={index} onClick={this.handleClicks.bind(this, venue)} tabIndex={1}>{venue.name}</li>})
                     }
-                    </ErrorBoundary>
+                   
                 </ul>
             </div>
         )
