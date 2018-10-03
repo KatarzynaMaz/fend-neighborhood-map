@@ -2,20 +2,17 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios'
 import Filter from './Filter'
+import Map from './Map'
 
 class App extends Component {
   //storing places in the venues state
   state = {
-    venues: []
+    venues: [],
+    filteredVenues: []
   }
 
   componentDidMount() {
     this.getVenues()
-  }
-
-  renderMap = () => {
-    loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAElGHukbd2Mb_rerPu-t6g2lvbkn77HYs&callback=initMap')
-    window.initMap = this.initMap
   }
 
   getVenues =() => {
@@ -36,43 +33,19 @@ class App extends Component {
           .catch(error => {
             console.log('ERROR' + error) 
           })
-  }
-  
-  initMap = () => {
+    }
 
-      //create a map
-      let map = new window.google.maps.Map(document.getElementById('map'), {
-      center: {lat: 42.443, lng: -76.501},
-      zoom: 14 });
+    filter = (query => {
 
-      let infowindow = new window.google.maps.InfoWindow();
-      
-      //Display markers
-      this.state.venues.map(myVenue => {
-
-        let contentString = `${myVenue.venue.name}`
-
-        //create a marker
+      this.setState(state =>{
+        let venues
         
-        let marker = new window.google.maps.Marker({
-          position: {lat: myVenue.venue.location.lat, 
-                    lng: myVenue.venue.location.lng},
-          map: map,
-          name: myVenue.venue.name
-        });
-       
-
-        //click on a chosen marker
-        marker.addListener('click', function() {
-
-        //the content needs to be changed
-        infowindow.setContent(contentString)
-
-        //open infowindow
-          infowindow.open(map, marker);
-        });
-    })   
-  }
+      })
+    })
+  
+  
+      
+    
 
 
   render() {
@@ -83,16 +56,6 @@ class App extends Component {
       </main>
     );
   }
-}
-
-
-function loadScript(url){
-  let index = window.document.getElementsByTagName('script')[0]
-  let script = window.document.createElement('script')
-  script.src = url
-  script.async = true
-  script.differ = true
-  index.parentNode.insertBefore(script,index)
 }
 
 
