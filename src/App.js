@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Filter from './Filter'
 import axios from 'axios'
 import ErrorBoundary from './ErrorBoundary';
+import './App.css'
 
 
 class App extends Component {
@@ -130,7 +131,7 @@ getVenues =() => {
     return (
       <main className = "app-container"> 
         <header className ='header'>
-          <input type = 'text' placeholder = 'filtered-venues' className='search'
+          <input className='search-field' type = 'text' placeholder = 'filtered-venues' 
           onChange = {event => this.handleFilter(event.target.value)} value='query'/>
           <h1 className = "title"> Restaurants in Ithaca, NY</h1>
         </header>

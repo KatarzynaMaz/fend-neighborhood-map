@@ -23,15 +23,14 @@ class Filter extends Component {
     let venues = this.props.venues;
     let query = this.props.query;
     return (
-            <div className="content" aria-label="Restaurants in Ithaca, NY">
-                <ul>
-                    
+            <div className="restaurant-list" aria-label="Restaurants in Ithaca, NY">
+                
+                <ul>           
                     {venues.filter(venue=>
                     
                     venue.name.toLowerCase().includes(query.toLowerCase())).map((venue, index) => {
                             return <li className="list-item" key={index} onClick={this.handleClicks.bind(this, venue)} tabIndex={1}>{venue.name}</li>})
-                    }
-                   
+                    }                   
                 </ul>
             </div>
      )
