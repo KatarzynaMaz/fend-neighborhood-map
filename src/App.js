@@ -139,7 +139,7 @@ getVenues =() => {
     
     console.log(listClass);
     return (
-      <main className = "app-container"> 
+      <main className = 'app-container'> 
         <header className ='header'>
         
           <input className='search-field' type = 'text' placeholder = 'Search' 
