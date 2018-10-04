@@ -131,7 +131,7 @@ getVenues =() => {
 
   toggleList = () => {
     console.log('Udacity');
-      this.setState(prev => (prev.listClass === 'hidden')?'visible':'hidden');
+    this.setState(prev => ({listClass: (prev.listClass === 'hidden')?'visible':'hidden'}));
   }
 
   render() {
@@ -142,9 +142,9 @@ getVenues =() => {
       <main className = "app-container"> 
         <header className ='header'>
         
-          <input className='search-field' type = 'text' placeholder = 'Input search' 
+          <input className='search-field' type = 'text' placeholder = 'Search' 
           onChange = {event => this.handleFilter(event.target.value)}/>
-          <h1 className = "title"> Restaurants in Ithaca, NY</h1>
+          <h1 className = "title"> RESTAURANTS IN ITHACA, NY</h1>
         </header>
         <button className="button" onClick = {() => this.toggleList()}>Toggle List</button>
         <ErrorBoundary>
