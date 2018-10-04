@@ -15,7 +15,8 @@ class App extends Component {
     contents:[],
     filtered:[],
     hideMarkers:[],
-    map: ''
+    map: '',
+    listClass: 'hidden'
   }
 
   componentDidMount() {
@@ -70,15 +71,17 @@ getVenues =() => {
         let contentString = `
         <div class = 'venue-info'>
           <h3>${venue.name}</h3>
-          <p>Address: <a href="https://maps.google.com/?q=${venue.address}">${venue.address}</a></p>
+          <p>Address: <a href="https://maps.google.com/?q=${venue.location.address}">${venue.location.address}</a></p>
           </div>`
 
         //create a marker for each venue on the map
         let marker = new window.google.maps.Marker({
-          position: venue.loc,
+          position: {
+            lat: venue.location.lat, lng:venue.location.lng
+          },
           map: map,
           title:venue.name,
-          animation: window.google.maps.Animation.BOUNCE
+          animation: window.google.maps.Animation.DROP
         });
         markers.push(marker);
         contents.push(contentString);
@@ -105,13 +108,14 @@ getVenues =() => {
   }
   
   handleFilter(query){
+    console.log(query);
     //setting visibility of markers
     this.setState({query});
     this.state.markers.map(marker => marker.setVisible(true));
   
   //if we have a query, filter venues
   if(query){
-    const filtered = this.props.venues.filter(venue =>
+    const filtered = this.state.venues.filter(venue =>
         venue.name.toLowerCase().includes(this.state.query.toLowerCase()));
         this.setState({filtered});
 
@@ -123,21 +127,29 @@ getVenues =() => {
     } else {
       this.state.markers.forEach(marker=>marker.setVisible(true));
     }
-  }       
+  }  
+
+  toggleList = () => {
+    console.log('Udacity');
+      this.setState(prev => (prev.listClass === 'hidden')?'visible':'hidden');
+  }
+
   render() {
-    const {venues,query,markers,infowindow,contents, filtered,hideMarkers,map} = this.state;
+    const {venues,query,markers,infowindow,contents, filtered,hideMarkers,map,listClass} = this.state;
     
-    console.log(query)
+    console.log(listClass);
     return (
       <main className = "app-container"> 
         <header className ='header'>
-          <input className='search-field' type = 'text' placeholder = 'filtered-venues' 
-          onChange = {event => this.handleFilter(event.target.value)} value='query'/>
+        
+          <input className='search-field' type = 'text' placeholder = 'Input search' 
+          onChange = {event => this.handleFilter(event.target.value)}/>
           <h1 className = "title"> Restaurants in Ithaca, NY</h1>
         </header>
+        <button className="button" onClick = {() => this.toggleList()}>Toggle List</button>
         <ErrorBoundary>
         <Filter query={query} venues= {venues} map = {map} markers={markers} contents = {contents}
-          infowindow={infowindow} filtered={filtered} hideMarkers={hideMarkers}/>
+          infowindow={infowindow} filtered={filtered} hideMarkers={hideMarkers} listClass={listClass}/>
         </ErrorBoundary>
        <div id='map' role='application' aria-label='map'></div>
        
