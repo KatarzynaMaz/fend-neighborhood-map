@@ -140,8 +140,7 @@ getVenues =() => {
     console.log(listClass);
     return (
       <main className = 'app-container'> 
-        <header className ='header'>
-        
+        <header className ='header'>         
           <input className='search-field' type = 'text' placeholder = 'Search' 
           onChange = {event => this.handleFilter(event.target.value)}/>
           <h1 className = "title"> RESTAURANTS IN ITHACA, NY</h1>
