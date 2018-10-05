@@ -23,7 +23,7 @@ class Filter extends Component {
     let venues = this.props.venues;
     let query = this.props.query;
     return (
-            <div  className = {`restaurant-list ${this.props.listClass}`}  aria-label='Restaurants in Ithaca, NY'>
+            <div  className = {`restaurant-list ${this.props.listClass}`}  aria-label='Restaurants in Ithaca, NY'  >
                 
                 <ul>           
                     {venues.filter(venue=>
