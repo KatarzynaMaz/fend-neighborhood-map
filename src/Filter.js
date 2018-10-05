@@ -11,10 +11,12 @@ class Filter extends Component {
             infowindow.open(map, marker);
             // set bounce animation for the marker that is clicked
             marker.setAnimation(window.google.maps.Animation.BOUNCE)
-            setTimeout(function() {
+                setTimeout(function() {
                 marker.setAnimation(null)
             }, 500)
         });
+        //invoking toggleList function
+        this.props.toggleList();
     }
    
     render() {
