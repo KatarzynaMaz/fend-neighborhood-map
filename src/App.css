@@ -5,6 +5,9 @@
   flex-flow: row nowrap; 
   cursor: pointer;
 }
+.app-container {
+  background-color: black; 
+}
 
 /*.App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -46,14 +49,20 @@ html, body {
   display: flex;
   flex-flow: column nowrap;
   width: 25vw;
+  
   background-color: navajowhite;
   position: absolute;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  cursor: pointer;
   }
+  .list-item {
+    font-size: 0.75rem;
+    }
   
-  .header {
+ /* .header {
     background-color: navajowhite;
     height: 4rem;
+    display: flex;
+    position: relative;
   }
   .search-field {
     display: flex;
@@ -65,11 +74,9 @@ html, body {
     font-size: 15px;
     border-radius: 20px;
     border: 3px solid black;
-    position: relative;
-  }
+  }*/
   .hidden {
     display: none;
-    
   }
   .visible {
     display: block;
@@ -79,14 +86,30 @@ html, body {
   }
   .button {
     height: 1rem;
-    border-radius: 20px;
+    border: 20px;
     border: 3px solid black;
+    display: flex;
+    background-color: white;
+    cursor: pointer;
   }
   .header {
+    background-color: navajowhite;
     display: flex;
-    flex-flow: row nowrap;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
-
+  .search-field {
+    width: 40%;
+    padding: 10px;
+    border: 3px;
+    border-style: solid;
+    border-color: black;
+    margin: 10px 0 10px 10px;
+    font-size: 15px;
+    cursor: pointer;
+    order: 1;
+  }
   .title {
     display: flex;
     flex-flow: row;
@@ -97,4 +120,19 @@ html, body {
   }
   h1 {
    text-align: center;
+  }
+  @media screen and (max-width: 768px) {
+    ul {
+      display: flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      font-size: 0.25rem;
+    }
+  } @media screen and (max-width: 480px) {
+    ul {
+      display: flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      font-size: 0.15rem;
+    }
   }
