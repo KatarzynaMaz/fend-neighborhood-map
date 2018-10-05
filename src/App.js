@@ -63,7 +63,9 @@ getVenues =() => {
       zoom: 14 });
 
       let infowindow = new window.google.maps.InfoWindow();
-      
+      //Defining bounds so we can later extend boundaries to the marker position
+      //some of the markers were not showing on the small screen
+      let bounds = new window.google.maps.LatLngBounds();
       //Display markers
       this.state.venues.filter(venue => venue.name.toLowerCase().includes(this.state.query.toLowerCase()))
         .forEach (venue => {
@@ -84,6 +86,8 @@ getVenues =() => {
           animation: window.google.maps.Animation.DROP
         });
         markers.push(marker);
+        //extending boundaries to the marker position
+        bounds.extend(marker.position);
         contents.push(contentString);
         
         //click on chosen marker
@@ -104,6 +108,7 @@ getVenues =() => {
           }
         })
     });
+    map.fitBounds(bounds);
     this.setState({map,markers,infowindow,contents}); 
   }
   
@@ -148,7 +153,7 @@ getVenues =() => {
         <button className="button" onClick = {() => this.toggleList()}>Toggle List</button>
         <ErrorBoundary>
         <Filter query={query} venues= {venues} map = {map} markers={markers} contents = {contents}
-          infowindow={infowindow} filtered={filtered} hideMarkers={hideMarkers} listClass={listClass}/>
+          infowindow={infowindow} filtered={filtered} hideMarkers={hideMarkers} listClass={listClass} toggleList = {this.toggleList}/>
         </ErrorBoundary>
        <div id='map' role='application' aria-label='map'></div>
        
