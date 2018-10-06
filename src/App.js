@@ -133,31 +133,31 @@ getVenues =() => {
       this.state.markers.forEach(marker=>marker.setVisible(true));
     }
   }  
-
+  //function toggleList will display the list of the restaurants when hidden and will hide 
+  //it when displayed
   toggleList = () => {
-    console.log('Udacity');
-    this.setState(prev => ({listClass: (prev.listClass === 'hidden')?'visible':'hidden'}));
+       this.setState(prev => ({listClass: (prev.listClass === 'hidden')?'visible':'hidden'}));
   }
 
   render() {
     const {venues,query,markers,infowindow,contents, filtered,hideMarkers,map,listClass} = this.state;
     
-    console.log(listClass);
+    //console.log(listClass);
+    //Setting tabIndex to 0 on a button, will allow the button to be focusable
     return (
       <main className = 'app-container'> 
         <header className ='header'>         
-          <input className='search-field' type = 'text' placeholder = 'Search' 
+          <input className='search-field' aria-labelledby ='Search for a restaurant' type = 'text' placeholder = 'Search' 
           onChange = {event => this.handleFilter(event.target.value)}/>
-          <h1 className = "title"> RESTAURANTS IN ITHACA, NY</h1>
+          <h1 className = 'title'> RESTAURANTS IN ITHACA, NY</h1>
         </header>
-        <button className="button" onClick = {() => this.toggleList()}>Toggle List</button>
+        <button className='button' aria-labelledby ='Display restaruants' onClick = {() => this.toggleList()} tabIndex ='0'>Restaurant List</button>
         <ErrorBoundary>
         <Filter query={query} venues= {venues} map = {map} markers={markers} contents = {contents}
           infowindow={infowindow} filtered={filtered} hideMarkers={hideMarkers} listClass={listClass} toggleList = {this.toggleList}/>
         </ErrorBoundary>
        <div id='map' role='application' aria-label='map'></div>
-       
-      </main>
+       </main>
       );
   }
 }
