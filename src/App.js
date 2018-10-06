@@ -39,19 +39,18 @@ getVenues =() => {
     v: '20182507'
   }
 
-
- 
-    axios.get(endPoint + new URLSearchParams(parameters))
-          .then(response => {
-            console.log(response.data.response.groups[0].items)
-          this.setState({
-              venues: response.data.response.groups[0].items.map(item=>item.venue)}, 
-              this.renderMap())
-          })
-          .catch(error => {
-            console.log('ERROR' + error)
-          })
-          console.log('map project');
+  axios.get(endPoint + new URLSearchParams(parameters))
+        .then(response => {
+          console.log(response.data.response.groups[0].items)
+        this.setState({
+            venues: response.data.response.groups[0].items.map(item=>item.venue)}, 
+            this.renderMap())
+        })
+        .catch(error => {
+          console.log('ERROR' + error);
+          alert('Error');
+        })
+        console.log('map project');
   }
  
   initMap = () => {
@@ -151,7 +150,7 @@ getVenues =() => {
           onChange = {event => this.handleFilter(event.target.value)}/>
           <h1 className = 'title'> RESTAURANTS IN ITHACA, NY</h1>
         </header>
-        <button className='button' aria-labelledby ='Display restaruants' onClick = {() => this.toggleList()} tabIndex ='0'>Restaurant List</button>
+        <button className='button' aria-labelledby ='Display restaurants' onClick = {() => this.toggleList()} tabIndex ='0'>Restaurant List</button>
         <ErrorBoundary>
         <Filter query={query} venues= {venues} map = {map} markers={markers} contents = {contents}
           infowindow={infowindow} filtered={filtered} hideMarkers={hideMarkers} listClass={listClass} toggleList = {this.toggleList}/>
@@ -162,7 +161,7 @@ getVenues =() => {
   }
 }
 
-
+//onerror event added to handle errors during loading the map
 function loadScript(url){
   let index = window.document.getElementsByTagName('script')[0]
   let script = window.document.createElement('script')
@@ -170,7 +169,9 @@ function loadScript(url){
   script.async = true
   script.differ = true
   index.parentNode.insertBefore(script,index)
+  script.onerror = function() {
+    document.write('Error loading map. Try again.')
+  }
 }
-
 
 export default App;
