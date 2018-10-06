@@ -31,7 +31,7 @@ class Filter extends Component {
                     {venues.filter(venue=>
                     
                     venue.name.toLowerCase().includes(query.toLowerCase())).map((venue, index) => {
-                            return <li className="list-item" key={index} onClick={this.handleClicks.bind(this, venue)} tabIndex={1}>{venue.name}</li>})
+                            return <li className="list-item" aria-labelledby = 'restaruant name'key={index} onClick={this.handleClicks.bind(this, venue)} tabIndex={0}>{venue.name}</li>})
                     }                   
                 </ul>
             </div>
