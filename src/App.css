@@ -5,136 +5,102 @@
   flex-flow: row;
   cursor: pointer;
 }
+
 .app-container {
   background-color: black; 
 }
 
-/*.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}*/
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
- /* Always set the map height explicitly to define the size of the div
+/* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
+
 #map {
-height: calc(100vh - 100px);
-width: 100%;
-display: flex;
-      }
-      /* Optional: Makes the sample page fill the window. */
+  height: calc(100vh - 100px);
+  width: 100%;
+  display: flex;
+}  
+
+  /* Optional: Makes the sample page fill the window. */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
+
 .restaurant-list {
   display: flex;
   flex-flow: column wrap;
-  width: 25vw;  
+  width: 25vw; 
+  max-width: 100%; 
   background-color: navajowhite;
   position: absolute;
   cursor: pointer;
   }
-  .list-item {
-    font-size: 0.75rem;
+
+.list-item {
+  font-size: 0.75rem;
+  }
+
+.hidden {
+  display: none;
+}
+
+.button {
+  height: 1rem;
+  border: 20px;
+  border: 3px solid black;
+  display: flex;
+  background-color: white;
+  cursor: pointer;
+}
+
+.header {
+  background-color: navajowhite;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+
+.search-field {
+  width: 40%;
+  padding: 10px;
+  border: 3px;
+  border-style: solid;
+  border-color: black;
+  margin: 10px 0 10px 10px;
+  font-size: 15px;
+  cursor: pointer;
+  order: 1;
+}
+
+.title {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  font-size: 25px;
+  position: center;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+    .title {
+      font-size: 6vw;
     }
-  
- /* .header {
-    background-color: navajowhite;
-    height: 4rem;
-    display: flex;
-    position: relative;
-  }
-  .search-field {
-    display: flex;
-    flex-flow: row;
-    flex-wrap: wrap;
-    height: 1.5rem;
-    padding: 0 3rem 0 1rem;
-    width: 5%;
-    font-size: 15px;
-    border-radius: 20px;
-    border: 3px solid black;
-  }*/
-  .hidden {
-    display: none;
-  }
-  .visible {
-    display: block;
-    z-index: 1000;
-    overflow: scroll;
-    height: 100vh;
-  }
-  .button {
-    height: 1rem;
-    border: 20px;
-    border: 3px solid black;
-    display: flex;
-    background-color: white;
-    cursor: pointer;
-  }
-  .header {
-    background-color: navajowhite;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 100px;
-  }
-  .search-field {
-    width: 40%;
-    padding: 10px;
-    border: 3px;
-    border-style: solid;
-    border-color: black;
-    margin: 10px 0 10px 10px;
-    font-size: 15px;
-    cursor: pointer;
-    order: 1;
-  }
-  .title {
-    display: flex;
-    flex-flow: row;
-    flex-wrap: wrap;
-    font-size: 25px;
-    position: center;
-    text-align: center;
-  }
-  h1 {
-   text-align: center;
-  }
-  @media screen and (max-width: 480px) {
-      .title {
-        font-size: 6vw;
-      }
-  .restaurant-list {
-    display: flex;
-    flex-flow: row;
-    flex-wrap: wrap;
-    width: 75%;
-    font-size: 4vw;
-  }
+    .restaurant-list {
+      display: flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      width: 75%;
+      font-size: 4vw;
+    }
+}
     
-  } @media screen and (max-width: 570px) {
+@media screen and (max-width: 570px) {
     .title {
       font-size: 4vw;
     }
@@ -144,4 +110,4 @@ html, body {
       flex-wrap: wrap;
       font-size: 2vw;
     }
-  }
+}
