@@ -161,7 +161,7 @@ getVenues =() => {
   }
 }
 
-//onerror event added to handle errors during loading the map
+//onerror event is added to handle errors during loading the map
 function loadScript(url){
   let index = window.document.getElementsByTagName('script')[0]
   let script = window.document.createElement('script')
