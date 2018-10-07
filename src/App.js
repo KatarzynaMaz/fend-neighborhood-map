@@ -28,7 +28,7 @@ class App extends Component {
     window.initMap = this.initMap.bind(this)
   }
 
-
+//getting venues from 3rd party API Foursquare
 getVenues =() => {
   let endPoint = 'https://api.foursquare.com/v2/venues/explore?'
   let parameters = { 
@@ -53,6 +53,7 @@ getVenues =() => {
         console.log('map project');
   }
  
+  //function from Googe Maps Platform 
   initMap = () => {
       let markers=[];
       let contents=[];
@@ -62,9 +63,11 @@ getVenues =() => {
       zoom: 14 });
 
       let infowindow = new window.google.maps.InfoWindow();
+
       //Defining bounds so we can later extend boundaries to the marker position
       //some of the markers were not showing on the small screen
       let bounds = new window.google.maps.LatLngBounds();
+
       //Display markers
       this.state.venues.filter(venue => venue.name.toLowerCase().includes(this.state.query.toLowerCase()))
         .forEach (venue => {
@@ -75,7 +78,7 @@ getVenues =() => {
           <p>Address: <a href="https://maps.google.com/?q=${venue.location.address}">${venue.location.address}</a></p>
           </div>`
 
-        //create a marker for each venue on the map
+        //create a marker for each venue on the         
         let marker = new window.google.maps.Marker({
           position: {
             lat: venue.location.lat, lng:venue.location.lng
@@ -112,12 +115,12 @@ getVenues =() => {
   }
   
   handleFilter(query){
-    console.log(query);
+    //console.log(query);
     //setting visibility of markers
     this.setState({query});
     this.state.markers.map(marker => marker.setVisible(true));
   
-  //if we have a query, filter venues
+  //if we have a query, we filter venues
   if(query){
     const filtered = this.state.venues.filter(venue =>
         venue.name.toLowerCase().includes(this.state.query.toLowerCase()));
@@ -147,7 +150,7 @@ getVenues =() => {
       <main className = 'app-container'> 
         <header className ='header'>         
           <input className='search-field' aria-labelledby ='Search for a restaurant' type = 'text' placeholder = 'Search' 
-          onChange = {event => this.handleFilter(event.target.value)}/>
+             onChange = {event => this.handleFilter(event.target.value)}/>
           <h1 className = 'title'> RESTAURANTS IN ITHACA, NY</h1>
         </header>
         <button className='button' aria-labelledby ='Display restaurants' onClick = {() => this.toggleList()} tabIndex ='0'>Restaurant List</button>
@@ -156,7 +159,7 @@ getVenues =() => {
           infowindow={infowindow} filtered={filtered} hideMarkers={hideMarkers} listClass={listClass} toggleList = {this.toggleList}/>
         </ErrorBoundary>
        <div id='map' role='application' aria-label='map'></div>
-       </main>
+      </main>
       );
   }
 }
